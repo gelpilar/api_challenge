@@ -21,8 +21,8 @@ public interface IPlantaRepository extends JpaRepository<PlantaModel, Long> {
 
     @Transactional
     @Modifying
-    @Query("Update PlantaModel set id_pais=null where id= :id")
-    void desasociarPais(Long idPais);
+    @Query("UPDATE PlantaModel SET id_pais = NULL WHERE id = :idPais")
+    void desasociarPais(@Param("idPais") Long idPais);
 
 
 }
