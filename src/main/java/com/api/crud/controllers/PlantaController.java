@@ -26,7 +26,7 @@ public class PlantaController {
     @PostMapping
     public PlantaModel postPlanta(@RequestBody RequestPlantaPost planta) {
         try {
-            System.out.println("2");
+
 
             return plantasService.postPlantas(planta);
         } catch (Exception e) {

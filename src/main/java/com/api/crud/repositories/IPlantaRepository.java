@@ -18,11 +18,10 @@ public interface IPlantaRepository extends JpaRepository<PlantaModel, Long> {
     @Transactional
     @Query("UPDATE PlantaModel p SET p.nombre = :nombre, p.alertasMedias = :alertasMedias, p.alertasRojas = :alertasRojas, p.cantidadDesabilitados = :cantidadDesabilitados, p.cantidadLecturas = :cantidadLecturas, p.pais.id = :id_pais WHERE p.id = :id")
     Integer actualizarPlanta(Long id, String nombre, Long alertasMedias, Long alertasRojas, Long cantidadDesabilitados, Long cantidadLecturas, Long id_pais);
-
-    @Transactional
     @Modifying
-    @Query("UPDATE PlantaModel SET id_pais = NULL WHERE id = :idPais")
-    void desasociarPais(@Param("idPais") Long idPais);
+    @Transactional
+    @Query("UPDATE PlantaModel SET pais = NULL WHERE id = :idPais")
+    void desasociarPais(Long idPais);
 
 
 }

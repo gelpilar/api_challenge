@@ -28,10 +28,11 @@ public class PlantasService {
         try {
 
             plantaRepository.desasociarPais(id);
-            PlantaModel p = plantaRepository.getReferenceById(id);
+            PlantaModel planta = plantaRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Planta no encontrada con ID: " + id));
+            plantaRepository.delete(planta);
 
-            plantaRepository.delete(p);
-            return p;
+            return planta;
         }catch (Error e)
         {
             throw new Error("Error" + e.toString());
