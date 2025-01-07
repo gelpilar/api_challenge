@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.swing.plaf.PanelUI;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -23,6 +24,8 @@ public class PlantaController {
 
     @Autowired
     private PlantasService plantasService;
+
+
     @PostMapping
     public PlantaModel postPlanta(@RequestBody RequestPlantaPost planta) {
         try {
@@ -53,6 +56,36 @@ public class PlantaController {
 
 
 
+    @GetMapping("/{id}")
+    public  Optional<PlantaModel> getPlanta(@PathVariable Long id)
+    {
+        return plantasService.getPlanta(id);
+    }
+
+    //CONSULTAS DE DATOS
+    @GetMapping("/datos/medias")
+    public Long getMedias()
+    {
+        return  plantasService.getAlertasMedias();
+    }
+    @GetMapping("/datos/rojas")
+
+    public Long getRojas()
+    {
+        return  plantasService.getAlertasRojas();
+    }
+    @GetMapping("/datos/lecturas")
+
+    public Long getLecturas()
+    {
+        return  plantasService.getLecturas();
+    }
+    @GetMapping("/datos/desabilitados")
+
+    public Long getDesabilitados()
+    {
+        return  plantasService.getDesabilitados();
+    }
 
 
 

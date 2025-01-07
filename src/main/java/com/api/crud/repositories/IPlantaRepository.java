@@ -23,5 +23,23 @@ public interface IPlantaRepository extends JpaRepository<PlantaModel, Long> {
     @Query("UPDATE PlantaModel SET pais = NULL WHERE id = :idPais")
     void desasociarPais(Long idPais);
 
+    @Transactional
+    @Query("SELECT SUM(p.alertasMedias)  from PlantaModel as p")
+    Long alertasMedias();
+
+    @Transactional
+    @Query("SELECT SUM(p.alertasRojas)  from PlantaModel as p")
+    Long alertasRojas();
+
+    @Transactional
+    @Query("SELECT SUM(p.cantidadLecturas) FROM PlantaModel as p")
+    Long lecturas();
+
+    @Transactional
+    @Query("SELECT SUM(p.cantidadDesabilitados) from PlantaModel as p")
+    Long desabilitados();
+
+
+
 
 }

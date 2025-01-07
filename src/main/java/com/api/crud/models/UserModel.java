@@ -1,21 +1,32 @@
 package com.api.crud.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
+import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.Check;
 
 @Entity
 @Table(name = "Usuario")
+@RequiredArgsConstructor
+
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
+
     @Column(unique = true)
+    @Email(message = "formato mail invalido")
+
     private  String email;
 
     @Column
+    @Size(min = 8, message = "contraseña no valida")
     private String  contra;
     @Column
     private String  Nombre;
+
 
     public Long getId() {
         return id;

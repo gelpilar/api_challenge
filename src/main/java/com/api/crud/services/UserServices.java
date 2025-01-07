@@ -1,12 +1,13 @@
 package com.api.crud.services;
 
 import com.api.crud.models.UserModel;
+import com.api.crud.models.auxiliar.CostumerUserDetails;
 import com.api.crud.repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -32,8 +33,16 @@ public class UserServices {
      return  userRepository.findById(id);
     }
 
-    public Optional<UserModel> login(String email,String contra)
+    public Optional<UserModel> getUserByEmail(String email)
     {
-        return userRepository.encontrarPorEmailYContra(email,contra);
+        return userRepository.encontrarPorEmailYContra(email);
     }
+    public UserModel getUserByEmailforlogin(String email)
+    {
+        return userRepository.encontrarPorEmail(email);
+    }
+
+
+
+
 }

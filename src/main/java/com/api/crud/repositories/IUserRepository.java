@@ -11,7 +11,9 @@ import java.util.Optional;
 @Repository
 public interface IUserRepository extends JpaRepository<UserModel, Long> {
 
-    @Query("SELECT u FROM UserModel u WHERE u.email = :email AND u.contra = :contra")
-    Optional<UserModel> encontrarPorEmailYContra(@Param("email") String email, @Param("contra") String contra);
+    @Query("SELECT u FROM UserModel u WHERE u.email = :email ")
+    Optional<UserModel> encontrarPorEmailYContra(@Param("email") String email);
 
+    @Query("SELECT u FROM UserModel u WHERE u.email = :email ")
+    UserModel encontrarPorEmail(@Param("email") String email);
 }
