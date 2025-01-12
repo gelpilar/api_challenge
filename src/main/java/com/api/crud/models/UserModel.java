@@ -6,6 +6,9 @@ import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.Check;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "Usuario")
 @RequiredArgsConstructor
@@ -26,6 +29,8 @@ public class UserModel {
     private String  contra;
     @Column
     private String  Nombre;
+
+
 
 
     public Long getId() {

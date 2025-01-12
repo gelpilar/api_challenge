@@ -2,6 +2,9 @@ package com.api.crud.models;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "Caracteristica")
 public class CaracteristicaModel {
@@ -9,10 +12,19 @@ public class CaracteristicaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long Id;
 
+
+    private  String nombre;
+
     private  Long primer;
     private  Long segundo;
     private  Long tercero;
+    public String getNombre() {
+        return nombre;
+    }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     public Long getId() {
         return Id;
     }
